@@ -14,6 +14,7 @@
 		2449309625EACF6D00DE9327 /* WhatsTheWeather.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2449309425EACF6D00DE9327 /* WhatsTheWeather.xcdatamodeld */; };
 		2449309825EACF6F00DE9327 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2449309725EACF6F00DE9327 /* Assets.xcassets */; };
 		2449309B25EACF6F00DE9327 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2449309925EACF6F00DE9327 /* LaunchScreen.storyboard */; };
+		244930A525EAD7F800DE9327 /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244930A425EAD7F800DE9327 /* WebService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		2449309725EACF6F00DE9327 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2449309A25EACF6F00DE9327 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2449309C25EACF6F00DE9327 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		244930A425EAD7F800DE9327 /* WebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 		2449308A25EACF6D00DE9327 /* WhatsTheWeather */ = {
 			isa = PBXGroup;
 			children = (
+				244930A325EAD7BC00DE9327 /* WebService */,
 				2449308B25EACF6D00DE9327 /* AppDelegate.swift */,
 				2449308D25EACF6D00DE9327 /* SceneDelegate.swift */,
 				2449308F25EACF6D00DE9327 /* ViewController.swift */,
@@ -68,6 +71,14 @@
 				2449309425EACF6D00DE9327 /* WhatsTheWeather.xcdatamodeld */,
 			);
 			path = WhatsTheWeather;
+			sourceTree = "<group>";
+		};
+		244930A325EAD7BC00DE9327 /* WebService */ = {
+			isa = PBXGroup;
+			children = (
+				244930A425EAD7F800DE9327 /* WebService.swift */,
+			);
+			path = WebService;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -143,6 +154,7 @@
 				2449309625EACF6D00DE9327 /* WhatsTheWeather.xcdatamodeld in Sources */,
 				2449309025EACF6D00DE9327 /* ViewController.swift in Sources */,
 				2449308C25EACF6D00DE9327 /* AppDelegate.swift in Sources */,
+				244930A525EAD7F800DE9327 /* WebService.swift in Sources */,
 				2449308E25EACF6D00DE9327 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

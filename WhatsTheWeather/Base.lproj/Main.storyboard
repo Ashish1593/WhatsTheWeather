@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="G9s-qR-wXB">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Weather View Controller-->
+        <!--Weather Detail View Controller-->
         <scene sceneID="FBe-FC-i3l">
             <objects>
-                <viewController id="G9s-qR-wXB" customClass="WeatherViewController" customModule="Clima" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="G9s-qR-wXB" customClass="WeatherDetailViewController" customModule="WhatsTheWeather" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wxl-tN-ccy">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -38,12 +38,10 @@
                                                     <action selector="locationPressedOnCLick:" destination="G9s-qR-wXB" eventType="touchUpInside" id="kNj-HB-O6b"/>
                                                 </connections>
                                             </button>
-                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search" textAlignment="right" clearsOnBeginEditing="YES" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="gFz-BE-qa5">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Or3-V6-doF">
                                                 <rect key="frame" x="50" y="0.0" width="274" height="40"/>
-                                                <color key="backgroundColor" systemColor="systemFillColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                                <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="go"/>
-                                            </textField>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cn5-rj-w5Z">
                                                 <rect key="frame" x="334" y="1" width="40" height="38"/>
                                                 <constraints>
@@ -53,7 +51,7 @@
                                                 <color key="tintColor" systemColor="labelColor"/>
                                                 <state key="normal" backgroundImage="magnifyingglass" catalog="system"/>
                                                 <connections>
-                                                    <action selector="searchPressed:" destination="G9s-qR-wXB" eventType="touchUpInside" id="96t-La-LTA"/>
+                                                    <action selector="searchPressedOnCLick:" destination="G9s-qR-wXB" eventType="touchUpInside" id="Q9J-ke-3sf"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -118,13 +116,95 @@
                         <outlet property="cityLabel" destination="BGD-ga-pus" id="v1s-dl-Y1U"/>
                         <outlet property="conditionImageView" destination="jhF-gT-pEI" id="eir-8B-d1u"/>
                         <outlet property="locationPressed" destination="cvu-Mo-l60" id="qaF-uZ-0Q5"/>
-                        <outlet property="serachUiTextField" destination="gFz-BE-qa5" id="sip-rG-0iz"/>
+                        <outlet property="searchPressed" destination="cn5-rj-w5Z" id="yQ9-cG-dlD"/>
                         <outlet property="temperatureLabel" destination="QMo-Gw-95J" id="sZe-Ch-0Lc"/>
+                        <segue destination="EGf-xf-hOa" kind="show" identifier="openSearchViewController" id="PDd-Pc-l2u"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="md7-VT-FUv" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-483" y="14"/>
+        </scene>
+        <!--Search View Controller-->
+        <scene sceneID="eNs-L2-z6B">
+            <objects>
+                <viewController id="EGf-xf-hOa" customClass="SearchViewController" customModule="WhatsTheWeather" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="pdh-Tl-N6v">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter City Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gXG-Ui-aRk">
+                                <rect key="frame" x="24" y="48" width="366" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rkY-g3-vQb">
+                                <rect key="frame" x="175" y="130" width="64" height="30"/>
+                                <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="64" id="jtn-B4-fA4"/>
+                                </constraints>
+                                <state key="normal" title="Search"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recent Searches" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aAK-cJ-hJR">
+                                <rect key="frame" x="20" y="244" width="200" height="20.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="Ice-Mk-qaq"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3f0-nD-EEW">
+                                <rect key="frame" x="0.0" y="288.5" width="414" height="519.5"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="Xc5-Sw-Swa" style="IBUITableViewCellStyleDefault" id="tbZ-6s-awC">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="tbZ-6s-awC" id="gHi-cZ-caa">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Xc5-Sw-Swa">
+                                                    <rect key="frame" x="20" y="0.0" width="374" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="2pW-G7-C0h"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="3f0-nD-EEW" firstAttribute="leading" secondItem="2pW-G7-C0h" secondAttribute="leading" id="2ZE-Yn-jJj"/>
+                            <constraint firstItem="aAK-cJ-hJR" firstAttribute="top" secondItem="rkY-g3-vQb" secondAttribute="bottom" constant="84" id="9Ix-6h-PLL"/>
+                            <constraint firstItem="gXG-Ui-aRk" firstAttribute="top" secondItem="2pW-G7-C0h" secondAttribute="top" constant="48" id="Bc4-IL-9KF"/>
+                            <constraint firstItem="3f0-nD-EEW" firstAttribute="top" secondItem="aAK-cJ-hJR" secondAttribute="bottom" constant="24" id="BfW-7g-gUz"/>
+                            <constraint firstItem="2pW-G7-C0h" firstAttribute="trailing" secondItem="gXG-Ui-aRk" secondAttribute="trailing" constant="24" id="JiY-nh-U72"/>
+                            <constraint firstItem="rkY-g3-vQb" firstAttribute="centerX" secondItem="2pW-G7-C0h" secondAttribute="centerX" id="XKQ-Dg-qmb"/>
+                            <constraint firstItem="3f0-nD-EEW" firstAttribute="bottom" secondItem="2pW-G7-C0h" secondAttribute="bottom" id="cSZ-Uq-abB"/>
+                            <constraint firstItem="2pW-G7-C0h" firstAttribute="trailing" secondItem="3f0-nD-EEW" secondAttribute="trailing" id="gIK-Ny-nXr"/>
+                            <constraint firstItem="aAK-cJ-hJR" firstAttribute="leading" secondItem="2pW-G7-C0h" secondAttribute="leading" constant="20" id="n5q-IU-b6F"/>
+                            <constraint firstItem="gXG-Ui-aRk" firstAttribute="leading" secondItem="2pW-G7-C0h" secondAttribute="leading" constant="24" id="zNI-NB-gfg"/>
+                            <constraint firstItem="rkY-g3-vQb" firstAttribute="top" secondItem="gXG-Ui-aRk" secondAttribute="bottom" constant="48" id="zl5-tr-CJG"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="qDN-tM-HDT"/>
+                    <connections>
+                        <outlet property="btnForSearch" destination="rkY-g3-vQb" id="TRS-8e-Evs"/>
+                        <outlet property="tableViewForRecentSearched" destination="3f0-nD-EEW" id="qWu-Ud-awY"/>
+                        <outlet property="txtFieldForSearch" destination="gXG-Ui-aRk" id="JT4-tq-bj2"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cZH-qb-icH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="282.60869565217394" y="12.723214285714285"/>
         </scene>
     </scenes>
     <resources>
@@ -138,11 +218,11 @@
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
+        <systemColor name="opaqueSeparatorColor">
+            <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemFillColor">
-            <color red="0.47058823529411764" green="0.47058823529411764" blue="0.50196078431372548" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

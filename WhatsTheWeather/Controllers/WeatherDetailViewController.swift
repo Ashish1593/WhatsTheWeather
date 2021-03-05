@@ -15,8 +15,8 @@ class WeatherDetailViewController: UIViewController {
     @IBOutlet weak var conditionImageView: UIImageView!
     @IBOutlet weak var temperatureLabel: UILabel!
     @IBOutlet weak var cityLabel: UILabel!
-    @IBOutlet weak var serachUiTextField: UITextField!
     @IBOutlet weak var locationPressed: UIButton!
+    @IBOutlet weak var searchPressed: UIButton!
     
     let locationManager = CLLocationManager()
 
@@ -37,6 +37,10 @@ class WeatherDetailViewController: UIViewController {
         locationManager.requestLocation()
     }
     
+    
+    @IBAction func searchPressedOnCLick(_ sender: UIButton) {
+        self.performSegue(withIdentifier: "openSearchViewController", sender: self)
+    }
     
     func fetchLocation(locationKey:String) {
         let weatherURL = URL(string: "http://dataservice.accuweather.com/currentconditions/v1/\(locationKey)?apikey=\(apikey)")!
@@ -72,7 +76,6 @@ class WeatherDetailViewController: UIViewController {
             }
         }
     }
-    
 }
 
 //MARK:- CLLocationManagerDelegate

@@ -89,8 +89,13 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pEk-d6-ffi" userLabel="Time">
+                                        <rect key="frame" x="324" y="355.5" width="50" height="50"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ogX-z8-X9i">
-                                        <rect key="frame" x="134" y="355.5" width="240" height="462.5"/>
+                                        <rect key="frame" x="134" y="415.5" width="240" height="402.5"/>
                                     </view>
                                 </subviews>
                                 <constraints>
@@ -118,6 +123,7 @@
                         <outlet property="locationPressed" destination="cvu-Mo-l60" id="qaF-uZ-0Q5"/>
                         <outlet property="searchPressed" destination="cn5-rj-w5Z" id="yQ9-cG-dlD"/>
                         <outlet property="temperatureLabel" destination="QMo-Gw-95J" id="sZe-Ch-0Lc"/>
+                        <outlet property="timeLabel" destination="pEk-d6-ffi" id="CDa-Du-c3q"/>
                         <segue destination="EGf-xf-hOa" kind="show" identifier="openSearchViewController" id="PDd-Pc-l2u"/>
                     </connections>
                 </viewController>

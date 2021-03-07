@@ -11,7 +11,7 @@ import CoreLocation
 
 public class WeatherDetailViewModel {
     
-    private let weather: Weather! = nil
+    var weather: Weather! = nil
     
 }
 
@@ -20,11 +20,12 @@ extension WeatherDetailViewModel {
         return self.weather.WeatherText
     }
     
-    var time: Date {
+    var time: String {
         let epochTime = TimeInterval(self.weather.EpochTime)
         let date = Date(timeIntervalSince1970: epochTime)   // "Apr 16, 2015, 2:40 AM"
-        
-        return date
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "YY, MMM d"
+        return dateFormatter.string(from: date)
     }
     
     var imperialValue: Double {

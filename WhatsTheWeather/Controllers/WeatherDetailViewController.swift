@@ -33,9 +33,17 @@ class WeatherDetailViewController: UIViewController {
         locationManager.requestWhenInUseAuthorization()
         locationManager.delegate = self
         locationManager.requestLocation()
-//        self.getLocationKey1(location: "Delhi")
-                        self.getLocationKey(lat: latitude, long: longitude)
-        //        self.fetchWeather(locationKey: "204844")
+        //        self.getLocationKey1(location: "Delhi")
+        self.getLocationKey(lat: latitude, long: longitude)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        guard let searchVC = segue.destination as? SearchViewController else {
+            fatalError("NavigationController not found")
+        }
+        searchVC.delegate = self
+        
     }
     
     @IBAction func locationPressedOnCLick(_ sender: UIButton) {
@@ -123,6 +131,13 @@ class WeatherDetailViewController: UIViewController {
     }
 }
 
+//MARK:- searchWeatherDelegate
+extension WeatherDetailViewController:searchWeatherDelegate {
+    func showWeather(place:String) {
+        self.getLocationKey1(location: place)
+    }
+}
+
 //MARK:- CLLocationManagerDelegate
 extension WeatherDetailViewController : CLLocationManagerDelegate {
     
@@ -133,10 +148,14 @@ extension WeatherDetailViewController : CLLocationManagerDelegate {
             let lat = location.coordinate.latitude
             let lon = location.coordinate.longitude
             self.getLocationKey(lat: lat, long: lon)
+        } else {
+            self.getLocationKey(lat: self.latitude, long: self.longitude)
         }
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print(error)
+        self.getLocationKey(lat: self.latitude, long: self.longitude)
     }
 }
+
+

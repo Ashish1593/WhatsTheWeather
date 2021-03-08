@@ -32,6 +32,8 @@ extension Resource {
 
 class WebService {
     
+    let APIKey = "ueHbn3uI60gZwI7ZYNSHEADAIWMrdAve"
+    
     func load<T>(resource: Resource<T>, completion: @escaping (Result<T, NetworkError>) -> Void) {
         
         var request = URLRequest(url: resource.url)

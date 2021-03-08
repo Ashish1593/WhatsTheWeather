@@ -23,18 +23,12 @@ class WeatherDetailViewController: UIViewController {
     
     private var weatherDetailViewModel = WeatherDetailViewModel()
     
-    let apikey: String = "scaqcbTq6CvGvHCrWD6A1xDGJCngbA9J"
-    let location : String = "Nagpur"
-    let latitude = 28.643
-    let longitude = 77.118
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         locationManager.requestWhenInUseAuthorization()
         locationManager.delegate = self
         locationManager.requestLocation()
-        //        self.getLocationKey1(location: "Delhi")
-        self.getLocationKey(lat: latitude, long: longitude)
+        weatherDetailViewModel.delegate = self
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -43,119 +37,57 @@ class WeatherDetailViewController: UIViewController {
             fatalError("NavigationController not found")
         }
         searchVC.delegate = self
-        
     }
     
     @IBAction func locationPressedOnCLick(_ sender: UIButton) {
         locationManager.requestLocation()
     }
     
-    
     @IBAction func searchPressedOnCLick(_ sender: UIButton) {
         self.performSegue(withIdentifier: "openSearchViewController", sender: self)
     }
     
-    func fetchWeather(locationKey:String) {
-        
-        let weatherResource: Resource<[Weather]> = {
-            
-            guard let url = URL(string: "http://dataservice.accuweather.com/currentconditions/v1/\(locationKey)?apikey=\(apikey)&details=false") else {
-                fatalError("URL is incorrect!")
-            }
-            
-            return Resource<[Weather]>(url: url)
-            
-        }()
-        
-        WebService().load(resource: weatherResource) { [weak self] result in
-            
-            switch result {
-            case .success(let weather):
-                print("weather fetched")
-                self?.weatherDetailViewModel.weather = weather[0]
-                self?.updateUI()
-            case .failure(let error):
-                print(error)
-            }
-        }
-    }
-    
-    func updateUI() {
+    func updateUIDetails() {
         self.temperatureLabel.text = String(weatherDetailViewModel.metricValue)
         self.cityLabel.text = weatherDetailViewModel.weatherText
         self.timeLabel.text = weatherDetailViewModel.time
-    }
-    
-    
-    func getLocationKey(lat:Double,long:Double) {
-        
-        let locationUrl: Resource<LocationKey> = {
-            guard let url = URL(string: "http://dataservice.accuweather.com/locations/v1/cities/geoposition/search?apikey=\(apikey)&q=\(lat)%2C\(long)") else {
-                fatalError("URL is incorrect!")
-            }
-            
-            return Resource<LocationKey>(url: url)
-            
-        }()
-        
-        WebService().load(resource: locationUrl) { [weak self] result in
-            
-            switch result {
-            case .success(let locationKey):
-                self?.fetchWeather(locationKey: locationKey.Key)
-            case .failure(let error):
-                print(error)
-            }
-        }
-    }
-    
-    func getLocationKey1(location:String) {
-        
-        
-        let locationUrl: Resource<[LocationKey]> = {
-            guard let url = URL(string: "http://dataservice.accuweather.com/locations/v1/cities/search?apikey=\(apikey)&q=\(location)") else {
-                fatalError("URL is incorrect!")
-            }
-            return Resource<[LocationKey]>(url: url)
-        }()
-        
-        WebService().load(resource: locationUrl) { [weak self] result in
-            
-            switch result {
-            case .success(let locationKey):
-                self?.fetchWeather(locationKey: locationKey[0].Key)
-            case .failure(let error):
-                print(error)
-            }
-        }
     }
 }
 
 //MARK:- searchWeatherDelegate
 extension WeatherDetailViewController:searchWeatherDelegate {
     func showWeather(place:String) {
-        self.getLocationKey1(location: place)
+        weatherDetailViewModel.getLocationKey(location: place)
+    }
+}
+
+//MARK:- searchWeatherDelegate
+extension WeatherDetailViewController: UpdateUIDelegate {
+    
+    func updateUI() {
+        self.updateUIDetails()
+    }
+    
+    func showErrorMessage(_ errorMessage: String){
+        self.showToast(message: errorMessage)
     }
 }
 
 //MARK:- CLLocationManagerDelegate
 extension WeatherDetailViewController : CLLocationManagerDelegate {
     
-    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.last {
             locationManager.stopUpdatingLocation()
-            let lat = location.coordinate.latitude
-            let lon = location.coordinate.longitude
-            self.getLocationKey(lat: lat, long: lon)
+            let lat = Double(String(format: "%.3f", location.coordinate.latitude))!
+            let lon = Double(String(format: "%.3f", location.coordinate.longitude))!
+            weatherDetailViewModel.getLocationKey(lat: lat, long: lon)
         } else {
-            self.getLocationKey(lat: self.latitude, long: self.longitude)
+            weatherDetailViewModel.getLocationKey(lat: LocationKey.defaultLat, long: LocationKey.defaultLon)
         }
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        self.getLocationKey(lat: self.latitude, long: self.longitude)
+        weatherDetailViewModel.getLocationKey(lat: LocationKey.defaultLat, long: LocationKey.defaultLon)
     }
 }
-
-

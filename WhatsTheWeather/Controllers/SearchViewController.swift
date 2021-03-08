@@ -29,7 +29,7 @@ class SearchViewController : UIViewController {
         
         if let place = txtFieldForSearch.text {
             if let delegate = self.delegate {
-                delegate.showWeather(place: place)
+                delegate.showWeather(place: place.replacingOccurrences(of: " ", with: ""))
                 self.dismiss(animated: true, completion: nil)
             }
         }

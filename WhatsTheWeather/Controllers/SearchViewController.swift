@@ -12,7 +12,7 @@ protocol searchWeatherDelegate {
     func showWeather(place:String)
 }
 
-class SearchViewController : UIViewController {
+class SearchViewController: UIViewController {
     
     @IBOutlet weak var txtFieldForSearch: UITextField!
     @IBOutlet weak var btnForSearch: UIButton!
@@ -41,14 +41,13 @@ class SearchViewController : UIViewController {
 
 extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.searchViewModel.numberOfRowsInSection()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "RecentSearchItemCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: CommonString.cellIdentifier, for: indexPath)
         
         cell.textLabel?.text = self.searchViewModel.searchItemAtIndex(indexPath.row)
         return cell

@@ -34,7 +34,7 @@ class WeatherDetailViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         guard let searchVC = segue.destination as? SearchViewController else {
-            fatalError("NavigationController not found")
+            fatalError("Controller not found")
         }
         searchVC.delegate = self
     }
@@ -44,7 +44,7 @@ class WeatherDetailViewController: UIViewController {
     }
     
     @IBAction func searchPressedOnCLick(_ sender: UIButton) {
-        self.performSegue(withIdentifier: "openSearchViewController", sender: self)
+        self.performSegue(withIdentifier: CommonString.weatherScreenSegue, sender: self)
     }
     
     func updateUIDetails() {
@@ -74,7 +74,7 @@ extension WeatherDetailViewController: UpdateUIDelegate {
 }
 
 //MARK:- CLLocationManagerDelegate
-extension WeatherDetailViewController : CLLocationManagerDelegate {
+extension WeatherDetailViewController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.last {

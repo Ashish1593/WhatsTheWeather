@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 struct Weather:Codable {
     let WeatherText: String
     let EpochTime: Int64

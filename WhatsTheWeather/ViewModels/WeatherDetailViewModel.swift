@@ -27,7 +27,7 @@ extension WeatherDetailViewModel {
     
     var time: String {
         let epochTime = TimeInterval(self.weather.EpochTime)
-        let date = Date(timeIntervalSince1970: epochTime)   // "Apr 16, 2015, 2:40 AM"
+        let date = Date(timeIntervalSince1970: epochTime)
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "YY, MMM d"
         return dateFormatter.string(from: date)
@@ -65,7 +65,7 @@ extension WeatherDetailViewModel {
         
         let weatherResource: Resource<[Weather]> = {
             
-            guard let url = URL(string: "http://dataservice.accuweather.com/currentconditions/v1/\(locationKey)?apikey=\(WebService().APIKey)&details=false") else {
+            guard let url = URL(string: "\(CommonString.baseUrl)/currentconditions/v1/\(locationKey)?apikey=\(CommonString.apiKey)&details=false") else {
                 fatalError("URL is incorrect!")
             }
             
@@ -91,7 +91,7 @@ extension WeatherDetailViewModel {
         
         
         let locationUrl: Resource<[LocationKey]> = {
-            guard let url = URL(string: "http://dataservice.accuweather.com/locations/v1/cities/search?apikey=\(WebService().APIKey)&q=\(searchLocation)") else {
+            guard let url = URL(string: "\(CommonString.baseUrl)/locations/v1/cities/search?apikey=\(CommonString.apiKey)&q=\(searchLocation)") else {
                 fatalError("URL is incorrect!")
             }
             return Resource<[LocationKey]>(url: url)
@@ -122,7 +122,7 @@ extension WeatherDetailViewModel {
     func getLocationKey(lat:Double,long:Double) {
         
         let locationUrl: Resource<LocationKey> = {
-            guard let url = URL(string: "http://dataservice.accuweather.com/locations/v1/cities/geoposition/search?apikey=\(WebService().APIKey)&q=\(lat)%2C\(long)") else {
+            guard let url = URL(string: "\(CommonString.baseUrl)/locations/v1/cities/geoposition/search?apikey=\(CommonString.apiKey)&q=\(lat)%2C\(long)") else {
                 fatalError("URL is incorrect!")
             }
             

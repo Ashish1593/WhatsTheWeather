@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		2449308C25EACF6D00DE9327 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2449308B25EACF6D00DE9327 /* AppDelegate.swift */; };
 		2449308E25EACF6D00DE9327 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2449308D25EACF6D00DE9327 /* SceneDelegate.swift */; };
-		2449309025EACF6D00DE9327 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2449308F25EACF6D00DE9327 /* ViewController.swift */; };
 		2449309325EACF6D00DE9327 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2449309125EACF6D00DE9327 /* Main.storyboard */; };
 		2449309625EACF6D00DE9327 /* WhatsTheWeather.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2449309425EACF6D00DE9327 /* WhatsTheWeather.xcdatamodeld */; };
 		2449309825EACF6F00DE9327 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2449309725EACF6F00DE9327 /* Assets.xcassets */; };
@@ -18,6 +17,7 @@
 		244930AA25EB674100DE9327 /* WeatherDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244930A925EB674100DE9327 /* WeatherDetailViewModel.swift */; };
 		248B60F625F54E4100FABE60 /* LocationKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248B60F525F54E4100FABE60 /* LocationKey.swift */; };
 		248B610325F5C18700FABE60 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248B610225F5C18700FABE60 /* Util.swift */; };
+		248B610725F5D72200FABE60 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248B610625F5D72200FABE60 /* Constants.swift */; };
 		24BFA40825EC693100EBB1BE /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24BFA40725EC693100EBB1BE /* Weather.swift */; };
 		24BFA42D25ECF58200EBB1BE /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24BFA42C25ECF58200EBB1BE /* SearchViewModel.swift */; };
 		24BFA43225ECF79C00EBB1BE /* WeatherDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24BFA43125ECF79C00EBB1BE /* WeatherDetailViewController.swift */; };
@@ -28,7 +28,6 @@
 		2449308825EACF6D00DE9327 /* WhatsTheWeather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhatsTheWeather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2449308B25EACF6D00DE9327 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2449308D25EACF6D00DE9327 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		2449308F25EACF6D00DE9327 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		2449309225EACF6D00DE9327 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2449309525EACF6D00DE9327 /* WhatsTheWeather.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WhatsTheWeather.xcdatamodel; sourceTree = "<group>"; };
 		2449309725EACF6F00DE9327 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -38,6 +37,7 @@
 		244930A925EB674100DE9327 /* WeatherDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDetailViewModel.swift; sourceTree = "<group>"; };
 		248B60F525F54E4100FABE60 /* LocationKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationKey.swift; sourceTree = "<group>"; };
 		248B610225F5C18700FABE60 /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
+		248B610625F5D72200FABE60 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		24BFA40725EC693100EBB1BE /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 		24BFA42C25ECF58200EBB1BE /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		24BFA43125ECF79C00EBB1BE /* WeatherDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDetailViewController.swift; sourceTree = "<group>"; };
@@ -74,6 +74,7 @@
 		2449308A25EACF6D00DE9327 /* WhatsTheWeather */ = {
 			isa = PBXGroup;
 			children = (
+				248B610525F5D6F600FABE60 /* Constants */,
 				248B610125F5C17800FABE60 /* Utils */,
 				24BFA42F25ECF75400EBB1BE /* Controllers */,
 				24BFA40625EC691900EBB1BE /* Models */,
@@ -81,7 +82,6 @@
 				244930A325EAD7BC00DE9327 /* WebService */,
 				2449308B25EACF6D00DE9327 /* AppDelegate.swift */,
 				2449308D25EACF6D00DE9327 /* SceneDelegate.swift */,
-				2449308F25EACF6D00DE9327 /* ViewController.swift */,
 				2449309125EACF6D00DE9327 /* Main.storyboard */,
 				2449309725EACF6F00DE9327 /* Assets.xcassets */,
 				2449309925EACF6F00DE9327 /* LaunchScreen.storyboard */,
@@ -114,6 +114,14 @@
 				248B610225F5C18700FABE60 /* Util.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		248B610525F5D6F600FABE60 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				248B610625F5D72200FABE60 /* Constants.swift */,
+			);
+			path = Constants;
 			sourceTree = "<group>";
 		};
 		24BFA40625EC691900EBB1BE /* Models */ = {
@@ -208,9 +216,9 @@
 				248B60F625F54E4100FABE60 /* LocationKey.swift in Sources */,
 				24BFA43225ECF79C00EBB1BE /* WeatherDetailViewController.swift in Sources */,
 				2449309625EACF6D00DE9327 /* WhatsTheWeather.xcdatamodeld in Sources */,
-				2449309025EACF6D00DE9327 /* ViewController.swift in Sources */,
 				244930AA25EB674100DE9327 /* WeatherDetailViewModel.swift in Sources */,
 				24BFA42D25ECF58200EBB1BE /* SearchViewModel.swift in Sources */,
+				248B610725F5D72200FABE60 /* Constants.swift in Sources */,
 				248B610325F5C18700FABE60 /* Util.swift in Sources */,
 				2449308C25EACF6D00DE9327 /* AppDelegate.swift in Sources */,
 				244930A525EAD7F800DE9327 /* WebService.swift in Sources */,

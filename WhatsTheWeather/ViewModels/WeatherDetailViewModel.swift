@@ -87,11 +87,11 @@ extension WeatherDetailViewModel {
         }
     }
     
-    func getLocationKey(location:String) {
+    func getLocationKey(searchLocation:String) {
         
         
         let locationUrl: Resource<[LocationKey]> = {
-            guard let url = URL(string: "http://dataservice.accuweather.com/locations/v1/cities/search?apikey=\(WebService().APIKey)&q=\(location)") else {
+            guard let url = URL(string: "http://dataservice.accuweather.com/locations/v1/cities/search?apikey=\(WebService().APIKey)&q=\(searchLocation)") else {
                 fatalError("URL is incorrect!")
             }
             return Resource<[LocationKey]>(url: url)
@@ -102,6 +102,12 @@ extension WeatherDetailViewModel {
             switch result {
             case .success(let location):
                 if location.count > 0 {
+                    
+                    var myarray = [String]()
+                    myarray = UserDefaults.standard.stringArray(forKey: "RecentSearches") ?? [String]()
+                    myarray.insert(searchLocation, at: 0)
+                    UserDefaults.standard.set(myarray, forKey: "RecentSearches")
+                    
                     self?.fetchWeather(locationKey: location[0].Key)
                 } else {
                     self?.delegate?.showErrorMessage("No Match Found")

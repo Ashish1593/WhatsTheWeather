@@ -57,7 +57,7 @@ class WeatherDetailViewController: UIViewController {
 //MARK:- searchWeatherDelegate
 extension WeatherDetailViewController:searchWeatherDelegate {
     func showWeather(place:String) {
-        weatherDetailViewModel.getLocationKey(location: place)
+        weatherDetailViewModel.getLocationKey(searchLocation: place)
     }
 }
 

@@ -18,11 +18,13 @@ class SearchViewController : UIViewController {
     @IBOutlet weak var btnForSearch: UIButton!
     @IBOutlet weak var tableViewForRecentSearched: UITableView!
     
+    private var searchViewModel = SearchViewModel()
     var delegate: searchWeatherDelegate?
     
     override func viewDidLoad() {
         super .viewDidLoad()
-        
+        self.tableViewForRecentSearched.delegate = self
+        self.tableViewForRecentSearched.dataSource = self
     }
     
     @IBAction func searchButtonPressed() {
@@ -32,6 +34,31 @@ class SearchViewController : UIViewController {
                 delegate.showWeather(place: place.replacingOccurrences(of: " ", with: ""))
                 self.dismiss(animated: true, completion: nil)
             }
+        }
+    }
+}
+
+
+extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.searchViewModel.numberOfRowsInSection()
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "RecentSearchItemCell", for: indexPath)
+        
+        cell.textLabel?.text = self.searchViewModel.searchItemAtIndex(indexPath.row)
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let place = self.searchViewModel.searchItemAtIndex(indexPath.row)
+        if let delegate = self.delegate {
+            delegate.showWeather(place: place.replacingOccurrences(of: " ", with: ""))
+            self.dismiss(animated: true, completion: nil)
         }
     }
 }

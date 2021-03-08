@@ -13,6 +13,6 @@ struct LocationKey: Codable {
 
 extension LocationKey {
     static let defaultLocation = "Nagpur"
-    static let defaultLat = 28.643
-    static let defaultLon = 77.118
+    static let defaultLat = 21.145
+    static let defaultLon = 79.088
 }

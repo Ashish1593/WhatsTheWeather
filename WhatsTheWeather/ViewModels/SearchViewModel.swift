@@ -6,3 +6,23 @@
 //
 
 import Foundation
+
+public class SearchViewModel {
+    
+    let recentSearch = UserDefaults.standard.stringArray(forKey: "RecentSearches") ?? [String]()
+}
+
+extension SearchViewModel {
+    var  numberOfSection : Int {
+        return 1
+    }
+    
+    func numberOfRowsInSection() -> Int {
+        return self.recentSearch.count > 5 ? 5 : self.recentSearch.count
+    }
+    
+    func searchItemAtIndex(_ index: Int) -> String {
+        let searchItem = self.recentSearch[index]
+        return searchItem
+    }
+}

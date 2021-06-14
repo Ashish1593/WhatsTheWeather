@@ -22,6 +22,7 @@
 		24BFA42D25ECF58200EBB1BE /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24BFA42C25ECF58200EBB1BE /* SearchViewModel.swift */; };
 		24BFA43225ECF79C00EBB1BE /* WeatherDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24BFA43125ECF79C00EBB1BE /* WeatherDetailViewController.swift */; };
 		24BFA43625ECF7B900EBB1BE /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24BFA43525ECF7B900EBB1BE /* SearchViewController.swift */; };
+		75117568266E7EB10088DA9D /* BIndingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75117567266E7EB10088DA9D /* BIndingTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		24BFA42C25ECF58200EBB1BE /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		24BFA43125ECF79C00EBB1BE /* WeatherDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDetailViewController.swift; sourceTree = "<group>"; };
 		24BFA43525ECF7B900EBB1BE /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		75117567266E7EB10088DA9D /* BIndingTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BIndingTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +76,7 @@
 		2449308A25EACF6D00DE9327 /* WhatsTheWeather */ = {
 			isa = PBXGroup;
 			children = (
+				75117566266E7E8F0088DA9D /* Custom Controls */,
 				248B610525F5D6F600FABE60 /* Constants */,
 				248B610125F5C17800FABE60 /* Utils */,
 				24BFA42F25ECF75400EBB1BE /* Controllers */,
@@ -140,6 +143,14 @@
 				24BFA43525ECF7B900EBB1BE /* SearchViewController.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		75117566266E7E8F0088DA9D /* Custom Controls */ = {
+			isa = PBXGroup;
+			children = (
+				75117567266E7EB10088DA9D /* BIndingTextField.swift */,
+			);
+			path = "Custom Controls";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -221,6 +232,7 @@
 				248B610725F5D72200FABE60 /* Constants.swift in Sources */,
 				248B610325F5C18700FABE60 /* Util.swift in Sources */,
 				2449308C25EACF6D00DE9327 /* AppDelegate.swift in Sources */,
+				75117568266E7EB10088DA9D /* BIndingTextField.swift in Sources */,
 				244930A525EAD7F800DE9327 /* WebService.swift in Sources */,
 				2449308E25EACF6D00DE9327 /* SceneDelegate.swift in Sources */,
 				24BFA40825EC693100EBB1BE /* Weather.swift in Sources */,

@@ -9,6 +9,7 @@ import Foundation
 
 public class SearchViewModel {
     
+    var city = ""
     let recentSearch = UserDefaults.standard.stringArray(forKey: "RecentSearches") ?? [String]()
 }
 

@@ -14,7 +14,13 @@ protocol searchWeatherDelegate {
 
 class SearchViewController: UIViewController {
     
-    @IBOutlet weak var txtFieldForSearch: UITextField!
+    @IBOutlet weak var txtFieldForSearch: BindingTextField! {
+        didSet {
+            txtFieldForSearch.bind {
+                self.searchViewModel.city = $0
+            }
+        }
+    }
     @IBOutlet weak var btnForSearch: UIButton!
     @IBOutlet weak var tableViewForRecentSearched: UITableView!
     
@@ -36,6 +42,8 @@ class SearchViewController: UIViewController {
             }
         }
     }
+    
+    
 }
 
 

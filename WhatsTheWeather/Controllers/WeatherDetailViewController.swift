@@ -22,6 +22,7 @@ class WeatherDetailViewController: UIViewController {
     let locationManager = CLLocationManager()
     
     private var weatherDetailViewModel = WeatherDetailViewModel()
+    var weather: Weather?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,9 +49,13 @@ class WeatherDetailViewController: UIViewController {
     }
     
     func updateUIDetails() {
-        self.temperatureLabel.text = String(weatherDetailViewModel.metricValue)
-        self.cityLabel.text = weatherDetailViewModel.weatherText
-        self.timeLabel.text = weatherDetailViewModel.time
+        if let weather = self.weatherDetailViewModel.weather {
+            weather.WeatherText.bind { self.cityLabel.text = $0 }
+            weather.Temperature.Metric.Value.bind { self.temperatureLabel.text = String($0)}
+            weather.EpochTime.bind {
+                self.timeLabel.text = self.weatherDetailViewModel.timeFormat(time: $0)
+            }
+        }
     }
 }
 

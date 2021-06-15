@@ -19,7 +19,7 @@ extension SearchViewModel {
     }
     
     func numberOfRowsInSection() -> Int {
-        return self.recentSearch.count > 5 ? 5 : self.recentSearch.count
+        return self.recentSearch.count
     }
     
     func searchItemAtIndex(_ index: Int) -> String {

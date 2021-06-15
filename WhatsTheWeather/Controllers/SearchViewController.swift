@@ -26,40 +26,27 @@ class SearchViewController: UIViewController {
     
     private var searchViewModel = SearchViewModel()
     var delegate: searchWeatherDelegate?
+    var dataSource: TableViewDataSource<SearchViewModel,UITableViewCell>?
     
     override func viewDidLoad() {
         super .viewDidLoad()
+        dataSource = TableViewDataSource(cellIdentifier:CommonString.cellIdentifier, viewModel: searchViewModel) {
+            vm, cell, index in
+            cell.textLabel?.text = vm.searchItemAtIndex(index)
+        }
         self.tableViewForRecentSearched.delegate = self
-        self.tableViewForRecentSearched.dataSource = self
+        self.tableViewForRecentSearched.dataSource = dataSource
     }
     
     @IBAction func searchButtonPressed() {
-        
-        if let place = txtFieldForSearch.text {
-            if let delegate = self.delegate {
-                delegate.showWeather(place: place.replacingOccurrences(of: " ", with: ""))
-                self.dismiss(animated: true, completion: nil)
-            }
+        if let delegate = self.delegate {
+            delegate.showWeather(place: searchViewModel.city.replacingOccurrences(of: " ", with: ""))
+            self.dismiss(animated: true, completion: nil)
         }
     }
-    
-    
 }
 
-
-extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.searchViewModel.numberOfRowsInSection()
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: CommonString.cellIdentifier, for: indexPath)
-        
-        cell.textLabel?.text = self.searchViewModel.searchItemAtIndex(indexPath.row)
-        return cell
-    }
+extension SearchViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let place = self.searchViewModel.searchItemAtIndex(indexPath.row)

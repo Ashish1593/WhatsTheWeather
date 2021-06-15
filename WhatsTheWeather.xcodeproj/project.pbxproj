@@ -23,6 +23,11 @@
 		24BFA43225ECF79C00EBB1BE /* WeatherDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24BFA43125ECF79C00EBB1BE /* WeatherDetailViewController.swift */; };
 		24BFA43625ECF7B900EBB1BE /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24BFA43525ECF7B900EBB1BE /* SearchViewController.swift */; };
 		75117568266E7EB10088DA9D /* BIndingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75117567266E7EB10088DA9D /* BIndingTextField.swift */; };
+		7562A5662677C34800996C85 /* Dynamic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7562A5652677C34800996C85 /* Dynamic.swift */; };
+		7562A56826788A9500996C85 /* TemperatureType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7562A56726788A9500996C85 /* TemperatureType.swift */; };
+		7562A56C26788ACE00996C85 /* TemperatureDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7562A56B26788ACE00996C85 /* TemperatureDetails.swift */; };
+		7562A56F2678B11700996C85 /* WeatherDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7562A56E2678B11700996C85 /* WeatherDataSource.swift */; };
+		7562A5712678CC6300996C85 /* TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7562A5702678CC6300996C85 /* TableViewDataSource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +49,11 @@
 		24BFA43125ECF79C00EBB1BE /* WeatherDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDetailViewController.swift; sourceTree = "<group>"; };
 		24BFA43525ECF7B900EBB1BE /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		75117567266E7EB10088DA9D /* BIndingTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BIndingTextField.swift; sourceTree = "<group>"; };
+		7562A5652677C34800996C85 /* Dynamic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dynamic.swift; sourceTree = "<group>"; };
+		7562A56726788A9500996C85 /* TemperatureType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureType.swift; sourceTree = "<group>"; };
+		7562A56B26788ACE00996C85 /* TemperatureDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureDetails.swift; sourceTree = "<group>"; };
+		7562A56E2678B11700996C85 /* WeatherDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDataSource.swift; sourceTree = "<group>"; };
+		7562A5702678CC6300996C85 /* TableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewDataSource.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +86,7 @@
 		2449308A25EACF6D00DE9327 /* WhatsTheWeather */ = {
 			isa = PBXGroup;
 			children = (
+				7562A56D2678B0FC00996C85 /* DataSource */,
 				75117566266E7E8F0088DA9D /* Custom Controls */,
 				248B610525F5D6F600FABE60 /* Constants */,
 				248B610125F5C17800FABE60 /* Utils */,
@@ -132,6 +143,8 @@
 			children = (
 				24BFA40725EC693100EBB1BE /* Weather.swift */,
 				248B60F525F54E4100FABE60 /* LocationKey.swift */,
+				7562A56726788A9500996C85 /* TemperatureType.swift */,
+				7562A56B26788ACE00996C85 /* TemperatureDetails.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -149,8 +162,18 @@
 			isa = PBXGroup;
 			children = (
 				75117567266E7EB10088DA9D /* BIndingTextField.swift */,
+				7562A5652677C34800996C85 /* Dynamic.swift */,
 			);
 			path = "Custom Controls";
+			sourceTree = "<group>";
+		};
+		7562A56D2678B0FC00996C85 /* DataSource */ = {
+			isa = PBXGroup;
+			children = (
+				7562A56E2678B11700996C85 /* WeatherDataSource.swift */,
+				7562A5702678CC6300996C85 /* TableViewDataSource.swift */,
+			);
+			path = DataSource;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -223,11 +246,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7562A5712678CC6300996C85 /* TableViewDataSource.swift in Sources */,
 				24BFA43625ECF7B900EBB1BE /* SearchViewController.swift in Sources */,
 				248B60F625F54E4100FABE60 /* LocationKey.swift in Sources */,
 				24BFA43225ECF79C00EBB1BE /* WeatherDetailViewController.swift in Sources */,
+				7562A56826788A9500996C85 /* TemperatureType.swift in Sources */,
+				7562A5662677C34800996C85 /* Dynamic.swift in Sources */,
 				2449309625EACF6D00DE9327 /* WhatsTheWeather.xcdatamodeld in Sources */,
 				244930AA25EB674100DE9327 /* WeatherDetailViewModel.swift in Sources */,
+				7562A56C26788ACE00996C85 /* TemperatureDetails.swift in Sources */,
+				7562A56F2678B11700996C85 /* WeatherDataSource.swift in Sources */,
 				24BFA42D25ECF58200EBB1BE /* SearchViewModel.swift in Sources */,
 				248B610725F5D72200FABE60 /* Constants.swift in Sources */,
 				248B610325F5C18700FABE60 /* Util.swift in Sources */,

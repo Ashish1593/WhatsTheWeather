@@ -20,20 +20,12 @@ public class WeatherDetailViewModel {
 }
 
 extension WeatherDetailViewModel {
-    var weatherText: String {
-        return self.weather.WeatherText
-    }
-    
-    var time: String {
-        let epochTime = TimeInterval(self.weather.EpochTime)
-        let date = Date(timeIntervalSince1970: epochTime)
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "YY, MMM d"
-        return dateFormatter.string(from: date)
-    }
-
-    var metricValue: Double {
-        return weather.Temperature.Metric.Value
+    func timeFormat(time: Int64) -> String {
+            let epochTime = TimeInterval(time)
+            let date = Date(timeIntervalSince1970: epochTime)
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "YY, MMM d"
+            return dateFormatter.string(from: date)
     }
     
 }

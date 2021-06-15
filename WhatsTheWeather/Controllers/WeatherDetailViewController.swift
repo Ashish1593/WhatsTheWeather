@@ -14,8 +14,9 @@ class WeatherDetailViewController: UIViewController {
     
     @IBOutlet weak var conditionImageView: UIImageView!
     @IBOutlet weak var temperatureLabel: UILabel!
-    @IBOutlet weak var cityLabel: UILabel!
+    @IBOutlet weak var weatherLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var cityLabel: UILabel!
     @IBOutlet weak var locationPressed: UIButton!
     @IBOutlet weak var searchPressed: UIButton!
     
@@ -50,11 +51,12 @@ class WeatherDetailViewController: UIViewController {
     
     func updateUIDetails() {
         if let weather = self.weatherDetailViewModel.weather {
-            weather.WeatherText.bind { self.cityLabel.text = $0 }
+            weather.WeatherText.bind { self.weatherLabel.text = $0 }
             weather.Temperature.Metric.Value.bind { self.temperatureLabel.text = String($0)}
             weather.EpochTime.bind {
                 self.timeLabel.text = self.weatherDetailViewModel.timeFormat(time: $0)
             }
+//            weather.Place.bind { self.cityLabel.text = $0 }
         }
     }
 }

@@ -13,9 +13,10 @@ class WetherDataSource : NSObject,UITableViewDataSource {
     let cellIdentifier =  CommonString.cellIdentifier
     private var searchViewModel: SearchViewModel
     
-     init(_ searchViewModel:SearchViewModel) {
+    init(_ searchViewModel:SearchViewModel) {
         self.searchViewModel = searchViewModel
     }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.searchViewModel.numberOfRowsInSection()
     }

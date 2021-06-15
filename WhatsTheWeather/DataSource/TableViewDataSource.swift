@@ -24,7 +24,6 @@ class TableViewDataSource<ViewModel,CellType>:NSObject,UITableViewDataSource whe
         return (self.viewModel as! SearchViewModel).recentSearch.count
     }
     
-   
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: self.cellIdentifier, for: indexPath) as? CellType else {
@@ -35,6 +34,5 @@ class TableViewDataSource<ViewModel,CellType>:NSObject,UITableViewDataSource whe
         return cell
         
     }
-    
     
 }
